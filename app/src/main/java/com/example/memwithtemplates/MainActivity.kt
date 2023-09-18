@@ -16,11 +16,48 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         createLayout()
+        val picturesList = ArrayList<Int>()
+
+        picturesList.add(R.drawable.pic0)
+        picturesList.add(R.drawable.pic1)
+        picturesList.add(R.drawable.pic2)
+        picturesList.add(R.drawable.pic3)
+        picturesList.add(R.drawable.pic4)
+        picturesList.add(R.drawable.pic5)
+        picturesList.add(R.drawable.pic6)
+        picturesList.add(R.drawable.pic7)
+        picturesList.add(R.drawable.pic8)
+        picturesList.add(R.drawable.pic9)
+        picturesList.add(R.drawable.pic10)
+        picturesList.add(R.drawable.pic11)
+        picturesList.add(R.drawable.pic12)
+        picturesList.add(R.drawable.pic13)
+        picturesList.add(R.drawable.pic14)
+
+        val randomListIndexes = ArrayList<Int>()
+        for (i in 0..< 10){
+            randomListIndexes.add(i)
+            randomListIndexes.add(i)
+        }
+        randomListIndexes.shuffle()
+
+
+
+        for (i in 0..<20) {
+            val my_btn : ImageButton = findViewById(("+id/btn" + i.toString()).hashCode())
+            my_btn.setImageResource(picturesList[randomListIndexes[i]])
+        }
+
+
+        for (i in 0..<10) {
+            val my_btn : ImageButton = findViewById(("+id/btn" + (i+10).toString()).hashCode())
+            my_btn.setImageResource(picturesList[i])
+        }
     }
 
 
     fun createLayout() {
-        setContentView(R.layout)
+        setContentView(R.layout.activity_main)
         val mainScreenMainLayout: ConstraintLayout = findViewById(R.id.mainConstraintLayout)
 
         //detach 2 images and buttons
@@ -42,8 +79,8 @@ class MainActivity : ComponentActivity() {
 
         //2 pictures
         val imgLeft = ImageView(this)
-        imgLeft.maxWidth = 500
-        imgLeft.maxHeight = 500
+        imgLeft.maxWidth = 300
+        imgLeft.maxHeight = 300
         imgLeft.adjustViewBounds = true
         imgLeft.setImageResource(R.drawable.tshirt2)
         twoMainPicturesLayout.addView(imgLeft)
@@ -83,15 +120,15 @@ class MainActivity : ComponentActivity() {
             for (i in 0..<numOfButtonsInARow) {
                 allButtonsOnPage.add(ImageButton(this))
                 val index = numOfButtonsInARow * j + i
+                allButtonsOnPage[index].id = ("+id/btn" + index.toString()).hashCode()
                 allButtonsOnPage[index].adjustViewBounds = true
-                allButtonsOnPage[index].maxWidth = 120
-                allButtonsOnPage[index].maxHeight = 120
+                allButtonsOnPage[index].maxWidth = 130
+                allButtonsOnPage[index].maxHeight = 130
                 allButtonsOnPage[index].setImageResource(R.drawable.tshirt2)
                 buttonsLayouts[j].addView(allButtonsOnPage[index])
 
             }
         }
-        allButtonsOnPage[17].visibility = View.INVISIBLE
 //
 //        allButtonsOnPage.add(ImageButton(this))
 //        val lastButton = allButtonsOnPage[allButtonsOnPage.size-1]
