@@ -3,4 +3,5 @@
     <item name="img_left" type="id" />
     <item name="img_right" type="id" />
     <item name="btn" type="id" />
+    <item name="imgAnimation" type="id" />
 </resources>
